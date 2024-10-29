@@ -1,5 +1,6 @@
 package com.keyin.City;
 
+import com.keyin.Airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,14 @@ public class CityService {
 
     public void deleteCity(Long id) {
         cityRepository.deleteById(id);
+    }
+
+    public List<Airport> getAirportsByCityId(Long id) {
+        City city = getCityById(id);
+        if (city != null) {
+            return city.getAirports();
+        } else {
+            return null;
+        }
     }
 }

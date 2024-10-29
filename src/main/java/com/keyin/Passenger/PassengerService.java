@@ -1,5 +1,6 @@
 package com.keyin.Passenger;
 
+import com.keyin.Aircraft.Aircraft;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,14 @@ public class PassengerService {
 
     public void deletePassenger(Long id) {
         passengerRepository.deleteById(id);
+    }
+
+    public List<Aircraft> getAircraftsByPassengerId(Long id) {
+        Passenger passenger = getPassengerById(id);
+        if (passenger != null) {
+            return passenger.getAircraft();
+        } else {
+            return null;
+        }
     }
 }

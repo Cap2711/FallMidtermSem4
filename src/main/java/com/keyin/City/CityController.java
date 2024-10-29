@@ -1,5 +1,6 @@
 package com.keyin.City;
 
+import com.keyin.Airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,10 @@ public class CityController {
         return cityService.getCityById(id);
     }
 
+    @GetMapping("/cityAirports/{id}")
+    public List<Airport> getAirportsByCityId(@PathVariable Long id) {
+        return cityService.getAirportsByCityId(id);
+    }
     @PostMapping("/cities")
     public City createCity(@RequestBody City newCity) {
         return cityService.createCity(newCity);

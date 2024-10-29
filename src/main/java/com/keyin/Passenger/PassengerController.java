@@ -1,5 +1,6 @@
 package com.keyin.Passenger;
 
+import com.keyin.Aircraft.Aircraft;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,11 @@ public class PassengerController {
         return passengerService.getPassengerById(id);
     }
 
+
+    @GetMapping("/passengerAircraft/{id}")
+    public List<Aircraft> getAircraftsByPassengerId(@PathVariable Long id) {
+        return passengerService.getAircraftsByPassengerId(id);
+    }
     @PostMapping("/passengers")
     public Passenger createPassenger(@RequestBody Passenger newPassenger) {
         return passengerService.createPassenger(newPassenger);
