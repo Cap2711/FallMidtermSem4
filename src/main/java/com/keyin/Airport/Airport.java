@@ -15,11 +15,13 @@ public class Airport {
     private long id;
     private String name;
     private String airportCode;
+    private Integer cityId;
 
     //relationships
 
     @ManyToMany
     private List<Aircraft> aircraft;
+
 
     public long getId() {
         return id;

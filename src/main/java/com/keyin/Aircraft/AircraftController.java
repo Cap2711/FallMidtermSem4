@@ -1,5 +1,7 @@
 package com.keyin.Aircraft;
 
+import com.keyin.Airport.Airport;
+import com.keyin.Airport.AirportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,15 @@ public class AircraftController {
 
     @Autowired
     private AircraftService aircraftService;
+
+    @Autowired
+    private AirportRepository airportRepository;
+
+    // Endpoint to get airports by aircraft
+    @GetMapping("/aircraft/{aircraftId}/airports")
+    public List<Airport> getAirportsByAircraft(@PathVariable Integer aircraftId) {
+        return airportRepository.findByAircraftId(aircraftId);
+    }
 
     @GetMapping("/aircraft")
     public List<Aircraft> getAllAircraft() {

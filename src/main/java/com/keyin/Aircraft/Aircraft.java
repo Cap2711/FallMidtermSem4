@@ -18,11 +18,16 @@ public class Aircraft {
     private String type;
     private String airLineName;
     private int numberOfPassengers;
+    private Integer passengerId;
 
     //relationships
 
     @ManyToMany
     private List<Passenger> passengers;
+
+    @ManyToMany
+    private List<Airport> airports;
+
 
     // getters
     public long getId() {
@@ -59,11 +64,12 @@ public class Aircraft {
         this.numberOfPassengers = numberOfPassengers;
     }
 
-   /* public List<Passenger> getPassengers() {
+    public List<Passenger> getPassengers() {
         return passengers;
     }
 
+
     public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
-    }*/
+    }
 }

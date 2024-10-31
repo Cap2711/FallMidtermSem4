@@ -1,9 +1,11 @@
 package com.keyin.City;
 
+import com.keyin.Airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -36,4 +38,15 @@ public class CityController {
     public void deleteCity(@PathVariable Long id) {
         cityService.deleteCity(id);
     }
+
+    @GetMapping("/cities/airports")
+    public Map<City, List<Airport>> getAirportsByCities() {
+        return cityService.getAirportsByCities();
+    }
+
+    @PutMapping("/cities/{cityId}/airports/{airportId}")
+    public City addAirportToCity(@PathVariable Long cityId, @PathVariable Long airportId) {
+        return cityService.addAirportToCity(cityId, airportId);
+    }
+
 }
