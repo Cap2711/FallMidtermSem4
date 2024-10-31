@@ -20,6 +20,7 @@ public class Passenger {
     @ManyToMany
     private List<Aircraft> aircraft;
 
+
     public long getId() {
         return id;
     }
@@ -57,7 +58,11 @@ public class Passenger {
     }
 
     public List<Aircraft> getAircraft() {
-        return aircraft;  
+        return aircraft;
+    }
+
+    public void addToAircrafts(Aircraft aircraft1){
+        aircraft.add(aircraft1);
     }
 
 }

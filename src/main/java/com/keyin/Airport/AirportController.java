@@ -12,6 +12,15 @@ public class AirportController {
     @Autowired
     private AirportService airportService;
 
+    @Autowired
+    private AirportRepository airportRepository;
+
+    // Endpoint to get airports by city
+    @GetMapping("/cities/{cityId}/airports")
+    public List<Airport> getAirportsByCity(@PathVariable Integer cityId) {
+        return airportRepository.findByCityId(cityId);
+    }
+
     @GetMapping("/airports")
     public List<Airport> getAllAirports() {
         return airportService.getAllAirports();
